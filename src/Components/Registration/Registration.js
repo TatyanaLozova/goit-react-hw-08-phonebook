@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+
 
 
 export class Registration extends Component {
@@ -16,7 +17,7 @@ export class Registration extends Component {
         
     handleSubmit = e => {
         e.preventDefault();
-        //  this.props.onLogin(this.state);
+     this.props.onRegister(this.state);
         this.setState({ name: '', email: '', password: '' });
     };
 
@@ -69,5 +70,6 @@ export class Registration extends Component {
 const mapDispatchToProps = {
     // myProps:
 }
+
 
 export default connect (null, mapDispatchToProps)(Registration);

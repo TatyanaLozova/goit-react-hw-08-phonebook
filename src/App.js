@@ -1,7 +1,4 @@
 import React from "react";
-// import ContactForm from './Components/ContactForm/ContactForm'
-// import ContactList from './Components/ContactList/ContactList';
-// import Filter from './Components/Filter/Filter'
 import { Route, Switch } from 'react-router-dom'
 
 
@@ -11,6 +8,8 @@ import HomeView from "./views/HomeView";
 import RegistrationView from "./views/RegistrationView";
 import LoginView from "./views/LoginView";
 import ContactsView from "./views/ContactsView";
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 
 // const HomeView = lazy(() =>
@@ -38,13 +37,7 @@ const App = () => {
            <Route path="/contacts" component={ContactsView} />
         <Route path="/register" component={RegistrationView} />
         <Route path="/login" component={LoginView} />
-
-      {/* <h1> Phonebook task #7</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-        <ContactList /> */}
-        </Switch>
+             </Switch>
     </div>
   );
 };

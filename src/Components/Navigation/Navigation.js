@@ -3,6 +3,19 @@ import { NavLink } from 'react-router-dom';
 import routes from '../../routes';
 // import { connect } from 'react-redux'
 
+const style = {
+  link: {
+    display: "inline-block",
+    textDecoration: "none",
+    padding: 12,
+    fontWeight: 900,
+    color: "#ffffff",
+  },
+  activeLink: {
+      color: "red",
+  },
+};
+
 
 const Navigation = ({ isAuthenticated }) => {
     return (
@@ -10,8 +23,8 @@ const Navigation = ({ isAuthenticated }) => {
             <NavLink
                 to={routes.home}
                 exact
-                style
-                activeStyle
+                 style={style.link}
+                activeStyle={style.activeLink}
             >
                 HOME
                 </NavLink>
@@ -19,8 +32,8 @@ const Navigation = ({ isAuthenticated }) => {
                 <NavLink
                     to={routes.contacts}
                     exact
-                    style
-                    activeStyle
+                     style={style.link}
+                activeStyle={style.activeLink}
                 >
                     Phonebook
                 </NavLink>
