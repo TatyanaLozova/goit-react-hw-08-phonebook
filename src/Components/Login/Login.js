@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { authOperations } from '../../redux/auth';
 
 
-export class LoginView extends Component {
+export class Login extends Component {
   state = {
     email: '',
     password: '',
@@ -15,7 +16,7 @@ export class LoginView extends Component {
         
     handleSubmit = e => {
         e.preventDefault();
-        //  this.props.onLogin(this.state);
+         this.props.myLogin(this.state);
         this.setState({ name: '', email: '', password: '' });
     };
 
@@ -55,8 +56,10 @@ export class LoginView extends Component {
     )
   }
 }
+// сокращенная запись mapDispatchToProps (пример Репеты)
 const mapDispatchToProps = {
-    // myProps:
-}
+ myLogin: authOperations.login,
+};
 
-export default connect (null, mapDispatchToProps)(LoginView);
+
+export default connect (null, mapDispatchToProps)(Login);

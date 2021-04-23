@@ -1,6 +1,6 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { authSelectors, authOperations } from "../../redux/auth";
+import { connect } from 'react-redux';
+import {authOperations } from "../../redux/auth";
 
 
 const UserMenu = ({ name, onLogout }) => (
@@ -9,6 +9,14 @@ const UserMenu = ({ name, onLogout }) => (
         <button type="button" onClick={onLogout}>Logout</button>
     </div>
 
-)
+);
 
-export default UserMenu;
+// const mapStateToProps = (state) => ({
+//   name: authSelectors.getUserName(state),
+//   avatar: myAvatar,
+// });
+const mapDispatchToProps = {
+ onLogout: authOperations.logout,
+};
+
+export default connect(mapDispatchToProps) (UserMenu);

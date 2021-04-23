@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { authOperations } from '../../redux/auth';
 
 
 
@@ -17,7 +18,7 @@ export class Registration extends Component {
         
     handleSubmit = e => {
         e.preventDefault();
-     this.props.onRegister(this.state);
+     this.props.myRegister(this.state);
         this.setState({ name: '', email: '', password: '' });
     };
 
@@ -67,9 +68,14 @@ export class Registration extends Component {
     )
   }
 }
-const mapDispatchToProps = {
-    // myProps:
-}
 
+// сокращенная запись mapDispatchToProps (пример Репеты)
+const mapDispatchToProps = {
+ myRegister: authOperations.register,
+};
+// сокращенная запись аналог вот этотому
+// const mapDispatchToProps = (dispatch) => ({
+//  myProps: (data) => dispatch(authOperations.register(data)),
+// });
 
 export default connect (null, mapDispatchToProps)(Registration);
