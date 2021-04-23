@@ -10,10 +10,12 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+// import persistReducer from 'redux-persist/es/persistReducer';
 // import storage from "redux-persist/lib/storage";
 
 import contactsReducer from "./contacts/contacts-reducer";
-// удаляем persistStore
+// import  {autReducer} from "./auth";
+// // удаляем persistStore
 
 // const contactsPersistConfig = {
 //   key: "contacts",
@@ -38,7 +40,9 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
+    //  auth:authReducer,
     contacts: contactsReducer,
+   
   },
   middleware,
   devTools: process.env.NODE_ENV === "development",
