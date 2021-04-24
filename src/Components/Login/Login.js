@@ -30,7 +30,7 @@ export class Login extends Component {
                 <Form.Control
                     type="email"
                     placeholder="Enter email"
-                    name={email}
+                    name="email"
                     value={email}
                     onChange={handleChange}
                 />
@@ -41,7 +41,7 @@ export class Login extends Component {
                 <Form.Control
                     type="password"
                     placeholder="Password"
-                    name={password}
+                    name="password"
                     value={password}
                     onChange={handleChange}
 
