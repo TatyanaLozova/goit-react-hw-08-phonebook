@@ -12,7 +12,7 @@ import {
      getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
-} from '../auth/auth-actions.js'
+} from './auth-actions.js'
 
 axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com";
 
@@ -90,7 +90,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
         dispatch(getCurrentUserError(error.message));
     }
 };
-;
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     register,
