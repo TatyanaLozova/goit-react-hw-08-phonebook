@@ -14,7 +14,7 @@ import {
   getCurrentUserError,
 } from './auth-actions.js'
 
-axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com";
+axios.defaults.baseURL = "https://connections-api.herokuapp.com/docs";
 
 const token = {
     set(token) {
