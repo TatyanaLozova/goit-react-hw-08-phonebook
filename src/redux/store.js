@@ -14,7 +14,7 @@ import {
 // import storage from "redux-persist/lib/storage";
 
 import contactsReducer from "./contacts/contacts-reducer";
-// import  {autReducer} from "./auth";
+import  authReducer from "./auth/auth-reducer";
 // // удаляем persistStore
 
 // const contactsPersistConfig = {
@@ -40,7 +40,7 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
-    //  auth:authReducer,
+     auth:authReducer,
     contacts: contactsReducer,
    
   },
