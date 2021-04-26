@@ -9,9 +9,9 @@ import {
     logoutRequest,
     logoutSuccess,
     logoutError,
-//      getCurrentUserRequest,
-//   getCurrentUserSuccess,
-//   getCurrentUserError,
+     getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
 } from './auth-actions.js'
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -74,32 +74,32 @@ const logout= () => async (dispatch) => {
 
 // GET​/users​/current
 // Получить информацию о текущем пользователе
-// const getCurrentUser = () => async (dispatch, getState) => {
-//     const {
-//         auth: { token: storageToken },
-//     } = getState()
+const getCurrentUser = () => async (dispatch, getState) => {
+    const {
+        auth: { token: storageToken },
+    } = getState()
 
-//     if (!storageToken) {
-//         return;
-//     }
-//     // token.set(storageToken);
+    if (!storageToken) {
+        return;
+    }
+    // token.set(storageToken);
 
-//     dispatch(getCurrentUserRequest())
-//     try {
-//         const response = await axios.get('users/current');
+    dispatch(getCurrentUserRequest())
+    try {
+        const response = await axios.get('users/current');
       
-//         dispatch(getCurrentUserSuccess(response.data));
-//     } catch (error) {
-//         dispatch(getCurrentUserError(error.message));
-//     }
-// };
+        dispatch(getCurrentUserSuccess(response.data));
+    } catch (error) {
+        dispatch(getCurrentUserError(error.message));
+    }
+};
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     register,
     login,
     logout,
-    // getCurrentUser
+    getCurrentUser
 };
 
 

@@ -1,22 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {authOperations } from "../../redux/auth";
+import { authOperations, authSelectors } from "../../redux/auth";
+import ava from '../../images/ava.jpg'
 
+const styles = {
+avatar: {
+      borderRadius: "50%",
+}
+}
 
-const UserMenu = ({ name, onLogout }) => (
+const UserMenu = ({ avatar, name, onLogout }) => (
     <div>
-        <span>Welcome? {name}</span>
+        <img src={avatar} alt="" width="40" styles={styles.avatar}
+         />
+        <span>Welcome, {name}</span>
         <button type="button" onClick={onLogout}>Logout</button>
     </div>
 
 );
 
-// const mapStateToProps = (state) => ({
-//   name: authSelectors.getUserName(state),
-//   avatar: myAvatar,
-// });
+const mapStateToProps = (state) => ({
+  name: authSelectors.getUserName(state),
+  avatar: ava,
+});
 const mapDispatchToProps = {
  onLogout: authOperations.logout,
 };
 
-export default connect(mapDispatchToProps) (UserMenu);
+export default connect(mapStateToProps, mapDispatchToProps) (UserMenu);
