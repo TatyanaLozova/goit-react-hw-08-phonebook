@@ -6,31 +6,34 @@ import {
     loginRequest,
     loginSuccess,
     loginError,
-    // logoutRequest,
-    // logoutSuccess,
-    // logoutError,
+    logoutRequest,
+    logoutSuccess,
+    logoutError,
 //      getCurrentUserRequest,
 //   getCurrentUserSuccess,
 //   getCurrentUserError,
 } from './auth-actions.js'
 
-axios.defaults.baseURL = "https://connections-api.herokuapp.com";
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// const token = {
-//     set(token) {
-//         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//     },
-//     unset() {
-//         axios.defaults.headers.common.Authorization = '';
-//     },
-// };
+const token = {
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    },
+    unset() {
+        axios.defaults.headers.common.Authorization = '';
+    },
+};
 
 // POST ​/users​/signup Создать нового пользователя
 const register =( credentials) => async (dispatch) => {
     dispatch(registerRequest());
     try {
         const response = await axios.post('/users/signup', credentials);
-        // token.set(response.data.token);
+
+        console.log(response);
+
+        token.set(response.data.token);
         dispatch(registerSuccess(response.data));
         
     } catch (error) {
@@ -44,7 +47,7 @@ const login= (credentials) => async (dispatch) => {
     dispatch(loginRequest());
     try {
         const response = await axios.post('/users/login', credentials);
-        //  token.set(response.data.token);
+         token.set(response.data.token);
         dispatch(loginSuccess(response.data));
 
         
@@ -54,20 +57,20 @@ const login= (credentials) => async (dispatch) => {
     }
 };
 
-// // POST ​/users​/logout Разлогинить пользователя
-// const logout= () => async (dispatch) => {
-//     dispatch(logoutRequest());
-//     try {
-//         await axios.post('/users/logout');
-//         // token.unset();
-//         dispatch(logoutSuccess())
+// POST ​/users​/logout Разлогинить пользователя
+const logout= () => async (dispatch) => {
+    dispatch(logoutRequest());
+    try {
+        await axios.post('/users/logout');
+        // token.unset();
+        dispatch(logoutSuccess())
 
         
-//     } catch (error) {
-//         dispatch(logoutError(error.message))
+    } catch (error) {
+        dispatch(logoutError(error.message))
         
-//     }
-// };
+    }
+};
 
 // GET​/users​/current
 // Получить информацию о текущем пользователе
@@ -95,7 +98,7 @@ const login= (credentials) => async (dispatch) => {
 export default {
     register,
     login,
-    // logout,
+    logout,
     // getCurrentUser
 };
 
