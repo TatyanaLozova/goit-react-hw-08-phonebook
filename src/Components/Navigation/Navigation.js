@@ -36,7 +36,7 @@ const Navigation = ({ isAuthenticated }) => {
                      style={style.link}
                 activeStyle={style.activeLink}
                 >
-                    Phonebook
+                   PHONEBOOK
                 </NavLink>
             )}
         </nav>

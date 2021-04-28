@@ -6,15 +6,19 @@ import ava from '../../images/ava.jpg'
 const styles = {
 avatar: {
       borderRadius: "50%",
-}
+  },
+  btn: {
+    borderRadius: "10%",
+     marginLeft: 10,
+  }
 }
 
 const UserMenu = ({ avatar, name, onLogout }) => (
     <div>
-        <img src={avatar} alt="" width="40" styles={styles.avatar}
+        <img src={avatar} alt="" width="40" style={styles.avatar}
          />
         <span>Welcome, {name}</span>
-        <button type="button" onClick={onLogout}>Logout</button>
+        <button type="button" onClick={onLogout} style={styles.btn}>Logout</button>
     </div>
 
 );

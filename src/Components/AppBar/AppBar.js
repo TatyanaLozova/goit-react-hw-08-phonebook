@@ -14,6 +14,7 @@ const style = {
         minHeight: 60,
         backgroundColor: "rgb(40, 215, 238, 0.384)",
         borderBottom: "1px solid",
+         width: "100%",
 
 
     },

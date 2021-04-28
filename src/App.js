@@ -41,7 +41,7 @@ class App extends Component {
       <AppBar />
       <Suspense fallback={<p>Loading</p>}>
       <Switch>
-         <PublicRoute exact path="/" restricted redirectTo="/contacts"component={HomeView} />
+         <PublicRoute exact path="/" component={HomeView} />
            <PrivateRoute path="/contacts" redirectTo="/login" component={ContactsView}/>
          <PublicRoute path="/register" restricted redirectTo="/contacts" component={RegistrationView} />
         <PublicRoute path="/login" restricted redirectTo="/contacts"component={LoginView} />
