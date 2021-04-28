@@ -82,7 +82,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
     if (!storageToken) {
         return;
     }
-    // token.set(storageToken);
+    token.set(storageToken);
 
     dispatch(getCurrentUserRequest())
     try {

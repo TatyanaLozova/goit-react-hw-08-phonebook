@@ -1,13 +1,18 @@
-import React, { lazy, Suspense } from "react";
-import { Route, Switch } from 'react-router-dom'
+import React, { Component, lazy, Suspense } from "react";
+import {  Switch } from 'react-router-dom';
 import './App.css';
 import AppBar from "./Components/AppBar/AppBar";
+import { PrivateRoute } from './Components/PrivateRoute';
+import { PublicRoute } from './Components/PublicRoute';
 // import HomeView from "./views/HomeView";
 // import RegistrationView from "./views/RegistrationView";
 // import LoginView from "./views/LoginView";
 // import ContactsView from "./views/ContactsView";
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {authOperations} from "./redux/auth";
+import { connect } from "react-redux";
+
 
 
 const HomeView = lazy(() =>
@@ -26,24 +31,32 @@ const RegistrationView = lazy(() =>
 );
 
 
-const App = () => {
-  return (
+class App extends Component {
+     componentDidMount() {
+    this.props.onGetCurrentUser();
+  }
+  render() {
+    return (
     <div className="App">
       <AppBar />
       <Suspense fallback={<p>Loading</p>}>
       <Switch>
-        <Route exact path="/" component={HomeView} />
-           <Route path="/contacts" component={ContactsView} />
-        <Route path="/register" component={RegistrationView} />
-        <Route path="/login" component={LoginView} />
+         <PublicRoute exact path="/" restricted redirectTo="/contacts"component={HomeView} />
+           <PrivateRoute path="/contacts" redirectTo="/login" component={ContactsView}/>
+         <PublicRoute path="/register" restricted redirectTo="/contacts" component={RegistrationView} />
+        <PublicRoute path="/login" restricted redirectTo="/contacts"component={LoginView} />
         </Switch>
         </Suspense>
     </div>
-  );
-};
-  
+    )
+  }
+}
 
-export default App;
+  const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps) (App);
 
 
 

@@ -13,7 +13,7 @@ import {
     deleteContactsError,
 } from "./contacts-actions";
 
-axios.defaults.baseURL = "http://localhost:4040";
+// axios.defaults.baseURL = "http://localhost:4040";
 
 const fetchContacts = () => async (dispatch) => {
   dispatch(fetchContactsRequest());
@@ -22,7 +22,7 @@ const fetchContacts = () => async (dispatch) => {
     const { data } = await axios.get("/contacts");
     dispatch(fetchContactsSuccess(data));
   } catch (error) {
-    dispatch(fetchContactsError(error));
+    dispatch(fetchContactsError(error.message));
   }
    // axios
   //   .get("/contacts")
@@ -60,7 +60,7 @@ const addContacts = contact => async (dispatch) => {
       await axios.delete(`/contacts/${contactId}`);
       dispatch(deleteContactsSuccess(contactId));
     } catch (error) {
-      dispatch(deleteContactsError(error));
+      dispatch(deleteContactsError(error.message));
     }
     // axios
   //   .delete(`/contacts/${contactId}`)
