@@ -21,6 +21,8 @@ const style = {
 };
      
 
+
+
 const AppBar = ({isAuthenticated}) => (
     <header  style={style.blok}>
         <Navigation />
